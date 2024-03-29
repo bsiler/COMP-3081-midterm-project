@@ -10,5 +10,8 @@ RSpec.describe Deck do
     it "has cards" do
       deck.cards
     end
+    it "has 52 cards" do
+      expect(deck.cards.size).to eq(52)
+    end
   end
 end
