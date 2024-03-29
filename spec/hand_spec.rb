@@ -6,19 +6,26 @@ RSpec.describe Hand do
     hand = Hand.new()
   end
   it "constructs with list of cards" do
-    hand = Hand.new([Card.new(7, "Hearts"),
+  end
+  context "initialized" do
+    context "empty" do
+      it "has no cards" do
+        expect(hand.cards.size).to eq(0)
+      end
+      it "can receive a new card" do
+        hand.cards << Card.new(7, "Hearts")
+        expect(hand.cards.size).to eq(1)
+      end
+    end
+    context "with cards" do
+      it "contains cards" do
+        hand = Hand.new([Card.new(7, "Hearts"),
                     Card.new(8, "Hearts"),
                     Card.new(9, "Hearts"),
                     Card.new(10, "Hearts"),
                     Card.new(11, "Hearts")])
-  end
-  context "when initialized" do
-    it "has no cards" do
-      expect(hand.cards.size).to eq(0)
-    end
-    it "can receive a new card" do
-      hand.cards << Card.new(7, "Hearts")
-      expect(hand.cards.size).to eq(1)
+        expect(hand.cards.size).to eq(5)
+      end
     end
   end
   describe ".determine_strength" do
