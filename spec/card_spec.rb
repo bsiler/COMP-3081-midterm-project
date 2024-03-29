@@ -9,4 +9,7 @@ RSpec.describe Card do
   it "can read suit" do
     expect(card.suit).to eq("Hearts")
   end
+  it "can read value" do
+    expect(card.value).to eq(7)
+  end
 end
