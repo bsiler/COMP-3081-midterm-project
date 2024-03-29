@@ -1,7 +1,7 @@
 class Hand
   attr_accessor :cards
-  def initialize()
-    @cards = []
+  def initialize(cards = [])
+    @cards = cards
   end
   def determine_strength()
     if same_suit(@cards)
