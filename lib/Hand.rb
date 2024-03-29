@@ -10,6 +10,17 @@ class Hand
     if is_straight(@cards)
       return "Straight"
     end
+    # Array to store the card values, since suit is not important
+    card_values = []
+    @cards.each do |card|
+      card_values << card.value
+    end
+    # For each unique value, check if it has four occurances
+    card_values.uniq.each do |value|
+      if card_values.tally[value] = 4
+        return "Four of a Kind"
+      end
+    end
   end
 
   def same_suit(cards)
