@@ -11,4 +11,8 @@ class Deck
       end
     end
   end
+
+  def shuffle
+    @cards = @cards.shuffle
+  end
 end
