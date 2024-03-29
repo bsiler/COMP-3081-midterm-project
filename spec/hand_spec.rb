@@ -27,7 +27,10 @@ RSpec.describe Hand do
   end
   describe ".same_suit" do
     it "returns true with two cards of same suit" do
-      expect(hand.same_suit([Card.new(1,"Clubs"),Card.new(8,"Clubs")])).to eq(true)
+      expect(hand.same_suit([Card.new(1,"Clubs"), Card.new(8,"Clubs")])).to eq(true)
+    end
+    it "returns false with two cards not of same suit" do
+      expect(hand.same_suit([Card.new(1,"Clubs"), Card.new(8,"Hearts")])).to eq(false)
     end
   end
 end
