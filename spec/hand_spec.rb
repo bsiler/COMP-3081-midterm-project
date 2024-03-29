@@ -25,4 +25,9 @@ RSpec.describe Hand do
       expect(flush.determine_strength).to eq("Flush")
     end
   end
+  describe ".same_suit" do
+    it "returns true with two cards of same suit" do
+      expect(hand.same_suit([Card.new(1,"Clubs"),Card.new(8,"Clubs")])).to eq(true)
+    end
+  end
 end
