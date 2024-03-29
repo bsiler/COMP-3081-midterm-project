@@ -12,7 +12,6 @@ RSpec.describe Hand do
     it "can receive a new card" do
       hand.cards << Card.new(7, "Hearts")
       expect(hand.cards.size).to eq(1)
-      pp hand.cards
     end
   end
   describe ".determine_strength" do
