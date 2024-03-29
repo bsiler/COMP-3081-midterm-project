@@ -6,5 +6,7 @@ RSpec.describe Card do
   it "constructs properly" do
     card = Card.new(7, "Hearts")
   end
-
+  it "can read suit" do
+    expect(card.suit).to eq("Hearts")
+  end
 end
