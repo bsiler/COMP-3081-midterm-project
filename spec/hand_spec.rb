@@ -5,6 +5,13 @@ RSpec.describe Hand do
   it "constructs" do
     hand = Hand.new()
   end
+  it "constructs with list of cards" do
+    hand = Hand.new([Card.new(7, "Hearts"),
+                    Card.new(8, "Hearts"),
+                    Card.new(9, "Hearts"),
+                    Card.new(10, "Hearts"),
+                    Card.new(11, "Hearts")])
+  end
   context "when initialized" do
     it "has no cards" do
       expect(hand.cards.size).to eq(0)
