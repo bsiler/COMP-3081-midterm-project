@@ -16,6 +16,13 @@ RSpec.describe Hand do
     Card.new(8, "Hearts"),
     Card.new(9, "Clubs")
   ])}
+  let(:four_of_a_kind_hand) { Hand.new([
+    Card.new(5, "Hearts"),
+    Card.new(5, "Clubs"),
+    Card.new(5, "Diamonds"),
+    Card.new(5, "Spades"),
+    Card.new(6, "Hearts")
+  ])}
   it "constructs" do
     hand = Hand.new()
   end
@@ -50,6 +57,11 @@ RSpec.describe Hand do
     context "when a straight" do
       it "returns straight" do
         expect(straight_hand.determine_strength).to eq("Straight")
+      end
+    end
+    context "when four of a kind" do
+      it "returns four of a kind" do
+        expect(four_of_a_kind_hand.determine_strength).to eq("Four of a Kind")
       end
     end
   end
