@@ -24,6 +24,16 @@ RSpec.describe Hand do
       flush.cards << Card.new(4, "Hearts")
       expect(flush.determine_strength).to eq("Flush")
     end
+    it "can determine straight (non-flush)" do
+      straight = Hand.new()
+      straight.cards << Card.new(5, "Hearts")
+      straight.cards << Card.new(6, "Hearts")
+      straight.cards << Card.new(7, "Hearts")
+      straight.cards << Card.new(8, "Hearts")
+      straight.cards << Card.new(9, "Clubs")
+      expect(straight.determine_strength).to eq("Straight")
+    end
+
   end
   describe ".same_suit" do
     it "returns true with two cards of same suit" do
