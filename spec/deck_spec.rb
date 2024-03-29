@@ -14,4 +14,11 @@ RSpec.describe Deck do
       expect(deck.cards.size).to eq(52)
     end
   end
+  describe ".shuffle" do
+    it "changes cards from initial order" do
+      shuffle_deck = Deck.new()
+      shuffle_deck.shuffle()
+      expect(deck).to_not eq(shuffle_deck)
+    end
+  end
 end
