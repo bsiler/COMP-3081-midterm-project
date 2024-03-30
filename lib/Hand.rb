@@ -32,6 +32,8 @@ class Hand
       return "Three of a Kind"
     elsif value_tally_counts.sort == [1,2,2]
       return "Two Pair"
+    elsif value_tally_counts.sort == [1,1,1,2]
+      return "One Pair"
     end
 
   end
