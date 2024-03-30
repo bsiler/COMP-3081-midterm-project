@@ -54,12 +54,38 @@ class Hand
     self_hand_strength_index = hand_types_ranked.find_index(self_hand_strength)
     opponent_hand_strength = opponent_hand.determine_strength
     opponent_hand_strength_index = hand_types_ranked.find_index(opponent_hand_strength)
+
     if self_hand_strength_index < opponent_hand_strength_index
       return true
-    else
+    elsif self_hand_strength_index > opponent_hand_strength_index
       return false
-    end
+    else
 
+      self_card_values = []
+      @cards.each do |card|
+        # Replace aces with 14 as they count higher for scoring
+        if card.value == 1
+          self_card_values << 14
+        else
+          self_card_values << card.value
+        end
+      end
+      opponent_card_values = []
+      opponent_hand.cards.each do |card|
+        if card.value == 1
+          opponent_card_values << 14
+        else
+          opponent_card_values << card.value
+        end
+      end
+      self_card_values = self_card_values.sort
+      opponent_card_values = opponent_card_values.sort
+      if (self_card_values <=> opponent_card_values) == 1
+        return true
+      else
+        return false
+      end
+    end
   end
 
   def same_suit(cards)
