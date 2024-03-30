@@ -56,6 +56,8 @@ class Hand
     opponent_hand_strength_index = hand_types_ranked.find_index(opponent_hand_strength)
     if self_hand_strength_index < opponent_hand_strength_index
       return true
+    else
+      return false
     end
 
   end
