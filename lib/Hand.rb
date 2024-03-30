@@ -40,6 +40,26 @@ class Hand
 
   end
 
+  def beats?(opponent_hand)
+    hand_types_ranked = ["Straight Flush",
+                          "Four of a Kind",
+                          "Full House",
+                          "Flush",
+                          "Straight",
+                          "Three of a Kind",
+                          "Two Pair",
+                          "One Pair",
+                          "High Card"]
+    self_hand_strength = self.determine_strength()
+    self_hand_strength_index = hand_types_ranked.find_index(self_hand_strength)
+    opponent_hand_strength = opponent_hand.determine_strength
+    opponent_hand_strength_index = hand_types_ranked.find_index(opponent_hand_strength)
+    if self_hand_strength_index < opponent_hand_strength_index
+      return true
+    end
+
+  end
+
   def same_suit(cards)
     same_suit = true
     suit = cards[0].suit
