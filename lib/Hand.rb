@@ -34,6 +34,8 @@ class Hand
       return "Two Pair"
     elsif value_tally_counts.sort == [1,1,1,2]
       return "One Pair"
+    else
+      return "High Card"
     end
 
   end
