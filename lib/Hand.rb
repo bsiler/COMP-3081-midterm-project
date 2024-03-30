@@ -4,6 +4,9 @@ class Hand
     @cards = cards
   end
   def determine_strength()
+    if same_suit(@cards) and is_straight(@cards)
+      return "Straight Flush"
+    end
     if same_suit(@cards)
       return "Flush"
     end
