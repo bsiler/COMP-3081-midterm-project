@@ -161,5 +161,8 @@ RSpec.describe Hand do
     it "pair beats high card" do
       expect(one_pair_hand.beats?(high_card_hand)).to eq(true)
     end
+    it "straight does not beat flush" do
+      expect(basic_straight_hand.beats?(flush_hand)).to eq(false)
+    end
   end
 end
