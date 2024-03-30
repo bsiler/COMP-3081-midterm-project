@@ -15,9 +15,10 @@ class Hand
     @cards.each do |card|
       card_values << card.value
     end
+
     # For each unique value, check if it has four occurances
     card_values.uniq.each do |value|
-      if card_values.tally[value] = 4
+      if card_values.tally[value] == 4
         return "Four of a Kind"
       end
     end
@@ -58,6 +59,11 @@ class Hand
 
     # Sort cards in ascending order by value
     sorted_card_values = card_values.sort
-    return in_a_row?(sorted_card_values)
+    # Deal with specific case where an ace is treated as high
+    if sorted_card_values == [1, 10, 11, 12, 13]
+      return true
+    else
+      return in_a_row?(sorted_card_values)
+    end
   end
 end
