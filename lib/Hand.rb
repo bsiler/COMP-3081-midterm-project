@@ -30,6 +30,8 @@ class Hand
       return "Full House"
     elsif value_tally_counts.sort == [1,1,3]
       return "Three of a Kind"
+    elsif value_tally_counts.sort == [1,2,2]
+      return "Two Pair"
     end
 
   end
