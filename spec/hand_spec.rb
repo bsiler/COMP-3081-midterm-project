@@ -44,6 +44,13 @@ RSpec.describe Hand do
     Card.new(5, "Spades"),
     Card.new(6, "Hearts")
   ])}
+  let(:three_of_a_kind_hand) { Hand.new([
+    Card.new(1, "Hearts"),
+    Card.new(2, "Clubs"),
+    Card.new(5, "Diamonds"),
+    Card.new(5, "Spades"),
+    Card.new(5, "Hearts")
+  ])}
   it "constructs" do
     hand = Hand.new()
   end
@@ -98,6 +105,11 @@ RSpec.describe Hand do
       end
       it "returns straight" do
         expect(basic_straight_hand.determine_strength).to eq("Straight")
+      end
+    end
+    context "when three of a kind" do
+      it "returns three of a kind" do
+        expect(three_of_a_kind_hand.determine_strength).to eq("Three of a Kind")
       end
     end
   end
