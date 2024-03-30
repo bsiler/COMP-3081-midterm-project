@@ -16,6 +16,13 @@ RSpec.describe Hand do
     Card.new(8, "Hearts"),
     Card.new(9, "Clubs")
   ])}
+  let(:basic_straight_flush_hand) { Hand.new([
+    Card.new(5, "Hearts"),
+    Card.new(6, "Hearts"),
+    Card.new(7, "Hearts"),
+    Card.new(8, "Hearts"),
+    Card.new(9, "Hearts")
+  ])}
   let(:ace_straight_hand) { Hand.new([
     Card.new(10, "Hearts"),
     Card.new(11, "Hearts"),
@@ -56,6 +63,11 @@ RSpec.describe Hand do
     end
   end
   describe ".determine_strength" do
+    context "when a straight flush" do
+      it "returns straight flush" do
+        expect(basic_straight_flush_hand.determine_strength).to eq("Straight Flush")
+      end
+    end
     context "when a flush" do
       it "returns flush" do
         expect(flush_hand.determine_strength).to eq("Flush")
