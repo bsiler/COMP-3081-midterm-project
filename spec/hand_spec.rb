@@ -51,6 +51,13 @@ RSpec.describe Hand do
     Card.new(5, "Spades"),
     Card.new(5, "Hearts")
   ])}
+  let(:two_pair_hand) { Hand.new([
+    Card.new(1, "Hearts"),
+    Card.new(1, "Clubs"),
+    Card.new(5, "Diamonds"),
+    Card.new(5, "Spades"),
+    Card.new(9, "Hearts")
+  ])}
   it "constructs" do
     hand = Hand.new()
   end
@@ -110,6 +117,11 @@ RSpec.describe Hand do
     context "when three of a kind" do
       it "returns three of a kind" do
         expect(three_of_a_kind_hand.determine_strength).to eq("Three of a Kind")
+      end
+    end
+    context "when two pair" do
+      it "returns two pair" do
+        expect(two_pair_hand.determine_strength).to eq("Two Pair")
       end
     end
   end
