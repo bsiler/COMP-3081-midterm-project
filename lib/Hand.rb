@@ -3,6 +3,15 @@ class Hand
   def initialize(cards = [])
     @cards = cards
   end
+
+  def card_values()
+    card_values = []
+    @cards.each do |card|
+      card_values << card.value
+    end
+    return card_values.sort
+  end
+
   def determine_strength()
     if same_suit(@cards) and is_straight(@cards)
       return "Straight Flush"
@@ -14,10 +23,8 @@ class Hand
       return "Straight"
     end
     # Array to store the card values, since suit is not important
-    card_values = []
-    @cards.each do |card|
-      card_values << card.value
-    end
+    card_values = self.card_values()
+
     # Unique card values to use for n of a kind determination
     unique_values = card_values.uniq
     # Count each card and store card value => count in hash
