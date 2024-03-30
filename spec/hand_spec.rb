@@ -2,6 +2,20 @@ require_relative '../lib/hand'
 require 'pp'
 RSpec.describe Hand do
   let(:empty_hand) { Hand.new() }
+  let(:basic_straight_flush_hand) { Hand.new([
+    Card.new(5, "Hearts"),
+    Card.new(6, "Hearts"),
+    Card.new(7, "Hearts"),
+    Card.new(8, "Hearts"),
+    Card.new(9, "Hearts")
+  ])}
+  let(:full_house_hand) { Hand.new([
+    Card.new(5, "Hearts"),
+    Card.new(5, "Clubs"),
+    Card.new(5, "Spades"),
+    Card.new(8, "Hearts"),
+    Card.new(8, "Spades")
+  ])}
   let(:flush_hand) { Hand.new([
     Card.new(5, "Hearts"),
     Card.new(8, "Hearts"),
@@ -15,13 +29,6 @@ RSpec.describe Hand do
     Card.new(7, "Hearts"),
     Card.new(8, "Hearts"),
     Card.new(9, "Clubs")
-  ])}
-  let(:basic_straight_flush_hand) { Hand.new([
-    Card.new(5, "Hearts"),
-    Card.new(6, "Hearts"),
-    Card.new(7, "Hearts"),
-    Card.new(8, "Hearts"),
-    Card.new(9, "Hearts")
   ])}
   let(:ace_straight_hand) { Hand.new([
     Card.new(10, "Hearts"),
@@ -68,6 +75,16 @@ RSpec.describe Hand do
         expect(basic_straight_flush_hand.determine_strength).to eq("Straight Flush")
       end
     end
+    context "when four of a kind" do
+      it "returns four of a kind" do
+        expect(four_of_a_kind_hand.determine_strength).to eq("Four of a Kind")
+      end
+    end
+    context "when a full house" do
+      it "returns full house" do
+        expect(full_house_hand.determine_strength).to eq("full house")
+      end
+    end
     context "when a flush" do
       it "returns flush" do
         expect(flush_hand.determine_strength).to eq("Flush")
@@ -81,12 +98,6 @@ RSpec.describe Hand do
       end
       it "returns straight" do
         expect(basic_straight_hand.determine_strength).to eq("Straight")
-      end
-    end
-
-    context "when four of a kind" do
-      it "returns four of a kind" do
-        expect(four_of_a_kind_hand.determine_strength).to eq("Four of a Kind")
       end
     end
   end
