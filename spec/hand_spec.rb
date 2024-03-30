@@ -65,6 +65,13 @@ RSpec.describe Hand do
     Card.new(5, "Spades"),
     Card.new(9, "Hearts")
   ])}
+  let(:high_card_hand) { Hand.new([
+    Card.new(1, "Hearts"),
+    Card.new(2, "Clubs"),
+    Card.new(8, "Diamonds"),
+    Card.new(4, "Spades"),
+    Card.new(12, "Hearts")
+  ])}
   it "constructs" do
     hand = Hand.new()
   end
@@ -134,6 +141,11 @@ RSpec.describe Hand do
     context "when one pair" do
       it "returns one pair" do
         expect(one_pair_hand.determine_strength).to eq("One Pair")
+      end
+    end
+    context "when high card" do
+      it "returns high card" do
+        expect(high_card_hand.determine_strength).to eq("High Card")
       end
     end
   end
