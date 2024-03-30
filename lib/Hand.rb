@@ -34,16 +34,30 @@ class Hand
     return same_suit
   end
 
+  # Helper method for is_straight()
+
+  def in_a_row?(values)
+    # Use ghost value for imaginary previous card in order to compare with first card
+    last_value = values[0] - 1
+    values.each do |value|
+      if value != last_value + 1
+        return false
+      end
+      last_value = value
+    end
+    return true
+  end
+
   def is_straight(cards)
     is_straight = true
-    cards.sort_by {|card| card.value}
-    last_value = cards[0].value - 1
-    cards.each do |card|
-      if card.value != last_value + 1
-        is_straight = false
-      end
-      last_value = card.value
+    # Extract card values
+    card_values = []
+    @cards.each do |card|
+      card_values << card.value
     end
-    return is_straight
+
+    # Sort cards in ascending order by value
+    sorted_card_values = card_values.sort
+    return in_a_row?(sorted_card_values)
   end
 end
