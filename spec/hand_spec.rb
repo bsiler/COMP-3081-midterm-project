@@ -72,6 +72,13 @@ RSpec.describe Hand do
     Card.new(4, "Spades"),
     Card.new(12, "Hearts")
   ])}
+  let(:high_card_hand_no_ace) { Hand.new([
+    Card.new(2, "Hearts"),
+    Card.new(2, "Clubs"),
+    Card.new(8, "Diamonds"),
+    Card.new(4, "Spades"),
+    Card.new(12, "Hearts")
+  ])}
   it "constructs" do
     hand = Hand.new()
   end
@@ -163,6 +170,9 @@ RSpec.describe Hand do
     end
     it "straight does not beat flush" do
       expect(basic_straight_hand.beats?(flush_hand)).to eq(false)
+    end
+    it "highest card wins if tie" do
+      expect(high_card_hand.beats?(high_card_hand_no_ace).to eq(true))
     end
   end
 end
