@@ -97,7 +97,7 @@ RSpec.describe Hand do
       end
     end
   end
-  describe ".determine_strength" do
+  describe "#determine_strength" do
     context "when a straight flush" do
       it "returns straight flush" do
         expect(basic_straight_flush_hand.determine_strength).to eq("Straight Flush")
@@ -155,6 +155,11 @@ RSpec.describe Hand do
     end
     it "returns false with two cards not of same suit" do
       expect(empty_hand.same_suit([Card.new(1,"Clubs"), Card.new(8,"Hearts")])).to eq(false)
+    end
+  end
+  describe ".beats?" do
+    it "pair beats high card" do
+      expect(one_pair_hand.beats?(high_card_hand)).to eq(true)
     end
   end
 end
