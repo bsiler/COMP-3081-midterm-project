@@ -18,13 +18,16 @@ class Hand
     @cards.each do |card|
       card_values << card.value
     end
-
-    # For each unique value, check if it has four occurances
-    card_values.uniq.each do |value|
-      if card_values.tally[value] == 4
-        return "Four of a Kind"
-      end
+    # Unique card values to use for n of a kind determination
+    unique_values = card_values.uniq
+    # Count each card and store card value => count in hash
+    value_tally = card_values.tally
+    # Extract just the counts
+    value_tally_counts = value_tally.values
+    if value_tally_counts.sort == [1,4]
+      return "Four of a Kind"
     end
+
   end
 
   def same_suit(cards)
