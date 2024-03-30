@@ -26,6 +26,8 @@ class Hand
     value_tally_counts = value_tally.values
     if value_tally_counts.sort == [1,4]
       return "Four of a Kind"
+    elsif value_tally_counts.sort == [2, 3]
+      return "Full House"
     end
 
   end

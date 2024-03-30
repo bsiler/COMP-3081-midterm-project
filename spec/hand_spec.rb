@@ -82,7 +82,7 @@ RSpec.describe Hand do
     end
     context "when a full house" do
       it "returns full house" do
-        expect(full_house_hand.determine_strength).to eq("full house")
+        expect(full_house_hand.determine_strength).to eq("Full House")
       end
     end
     context "when a flush" do
